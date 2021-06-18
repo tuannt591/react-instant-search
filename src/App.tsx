@@ -3,7 +3,8 @@ import parse from "html-react-parser";
 import "./App.css";
 
 function App() {
-  const [value, setValue] = useState < string > "";
+  
+  const [value, setValue] = useState<string>('');
   const [listPackage, setListPackage] = useState<any[]>([]);
 
   const callApi = async (keyword: string) => {
