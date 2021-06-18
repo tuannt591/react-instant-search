@@ -40,7 +40,7 @@ function App() {
             handleSearch(event.target.value);
           }}
         />
-        fast-npm-search.xyz | Powered by <a href='https://anve.re' target='_blank'>anve.re</a>
+        fast-npm-search.xyz | Powered by <a href='https://anve.re' target='_blank' rel='noreferrer'>anve.re</a>
       </div>
       <div className="instantSearch__main">
         <div className="instantSearch__row">
@@ -58,7 +58,7 @@ function App() {
                             </span>
                             <span className="medium black-1 flex1">
                             {highlight.field == 'name' ? 
-                              <a href={`https://npmjs.com/package/${item.package.id}`} target='_blank'>{parse(highlight.value)}</a>
+                              <a href={`https://npmjs.com/package/${item.package.id}`} target='_blank' rel='noreferrer'>{parse(highlight.value)}</a>
                               : parse(highlight.value)
                             }
                             </span>
