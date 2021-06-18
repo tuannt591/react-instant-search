@@ -33,13 +33,14 @@ function App() {
       <div className="instantSearch__input">
         <input
           type="text"
-          placeholder="Search..."
+          placeholder="Search a package..."
           className="form-control"
           value={value}
           onChange={(event) => {
             handleSearch(event.target.value);
           }}
         />
+        fast-npm-search.xyz | Powered by <a href='https://anve.re' target='_blank'>anve.re</a>
       </div>
       <div className="instantSearch__main">
         <div className="instantSearch__row">
@@ -56,7 +57,10 @@ function App() {
                               {highlight.field}:
                             </span>
                             <span className="medium black-1 flex1">
-                              {parse(highlight.value)}
+                            {highlight.field == 'name' ? 
+                              <a href={`https://npmjs.com/package/${item.package.id}`} target='_blank'>{parse(highlight.value)}</a>
+                              : parse(highlight.value)
+                            }
                             </span>
                           </li>
                         );
