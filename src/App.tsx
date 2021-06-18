@@ -57,7 +57,7 @@ function App() {
                               {highlight.field}:
                             </span>
                             <span className="medium black-1 flex1">
-                            {highlight.field == 'name' ? 
+                            {highlight.field === 'name' ? 
                               <a href={`https://npmjs.com/package/${item.package.id}`} target='_blank' rel='noreferrer'>{parse(highlight.value)}</a>
                               : parse(highlight.value)
                             }
