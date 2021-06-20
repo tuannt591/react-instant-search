@@ -40,7 +40,7 @@ function App() {
             handleSearch(event.target.value);
           }}
         />
-        fast-npm-search.xyz | Powered by <a href='https://anve.re' target='_blank' rel='noreferrer'>anve.re</a>
+        Powered by <a href='https://anve.re' target='_blank' rel='noreferrer'>anve.re</a>
       </div>
       <div className="instantSearch__main">
         <div className="instantSearch__row">
