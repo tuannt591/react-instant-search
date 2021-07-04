@@ -9,7 +9,7 @@ function App() {
 
   const callApi = async (keyword: string) => {
     try {
-      const url = `https://api.fast-npm-search.xyz/packages?input=${keyword}`;
+      const url = `https://api.fast-npm-search.xyz/packages?input=${keyword}&highlight=true`;
       const res = await fetch(url);
       const data = await res.json();
       setListPackage(data.results);
