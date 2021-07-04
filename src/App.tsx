@@ -6,13 +6,14 @@ function App() {
   
   const [value, setValue] = useState<string>('');
   const [listPackage, setListPackage] = useState<any[]>([]);
-
+  const [exeTime, setExeTime] = useState<string>('');
   const callApi = async (keyword: string) => {
     try {
-      const url = `https://api.fast-npm-search.xyz/packages?input=${keyword}&highlight=true`;
+      const url = `https://api.fast-npm-search.xyz/packages?input=${keyword}&highlight=true&limit=12`;
       const res = await fetch(url);
       const data = await res.json();
       setListPackage(data.results);
+      setExeTime(data.time);
     } catch (e) {
       throw e;
     }
@@ -25,6 +26,7 @@ function App() {
     } else {
       setValue("");
       setListPackage([]);
+      setExeTime('');
     }
   };
 
@@ -43,6 +45,7 @@ function App() {
         Powered by <a href='https://anve.re' target='_blank' rel='noreferrer'>anve.re</a>
       </div>
       <div className="instantSearch__main">
+        <p>{exeTime ? `Results in: ${exeTime}` : null}</p>
         <div className="instantSearch__row">
           {listPackage.length > 0 &&
             listPackage.map((item: any) => {
