@@ -9,7 +9,7 @@ function App() {
   const [exeTime, setExeTime] = useState<string>('');
   const callApi = async (keyword: string) => {
     try {
-      const url = `https://api.fast-npm-search.xyz/packages?input=${keyword}&highlight=true&limit=12`;
+      const url = `https://npm.anve.re/packages?input=${keyword}&highlight=true&limit=12`;
       const res = await fetch(url);
       const data = await res.json();
       setListPackage(data.results);
