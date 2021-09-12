@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import parse from "html-react-parser";
 import "./App.css";
 
 function App() {
@@ -9,7 +8,7 @@ function App() {
   const [exeTime, setExeTime] = useState<string>('');
   const callApi = async (keyword: string) => {
     try {
-      const url = `https://npm.anve.re/packages?input=${keyword}&highlight=true&limit=12`;
+      const url = `https://npm.anve.re/docs?app_id=npm-search&index_id=test&limit=12&input=${keyword}`;
       const res = await fetch(url);
       const data = await res.json();
       setListPackage(data.results);
@@ -50,28 +49,21 @@ function App() {
           {listPackage.length > 0 &&
             listPackage.map((item: any) => {
               return (
-                <div className="instantSearch__col" key={item.package.id}>
+                <div className="instantSearch__col" key={item.id}>
                   <div className="instantSearch__item">
-                    <ul>
-                      {item.highlights.map((highlight: any) => {
-                        return (
-                          <li className="d-flex pb-10" key={highlight.field}>
-                            <span className="bold black-1 mr-15">
-                              {highlight.field}:
-                            </span>
-                            <span className="medium black-1 flex1">
-                            {highlight.field === 'name' ? 
-                              <a href={`https://npmjs.com/package/${item.package.id}`} target='_blank' rel='noreferrer'>{parse(highlight.value)}</a>
-                              : parse(highlight.value)
-                            }
-                            </span>
-                          </li>
-                        );
-                      })}
+                    <ul>                        
+                      <li className="d-flex pb-10" key={item.id}>
+                        <span className="bold black-1 mr-15">
+                          name
+                        </span>
+                        <span className="medium black-1 flex1">
+                        <a href={`https://npmjs.com/package/${item.id}`} target='_blank' rel='noreferrer'>{item.id}</a>
+                        </span>
+                      </li>
                       <li className="d-flex pb-10">
                         <span className="bold black-1 mr-15">description:</span>
                         <span className="medium black-1 flex1">
-                          {item.package.description}
+                          {item.description}
                         </span>
                       </li>
                     </ul>
